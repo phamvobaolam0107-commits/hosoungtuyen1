@@ -1,1 +1,1656 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu CV - 5 Ứng Viên Tiềm Năng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .candidate-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+        }
+        
+        .candidate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .candidate-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+        }
+        
+        .candidate-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .candidate-card:hover .candidate-img {
+            transform: scale(1.05);
+        }
+        
+        .candidate-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .candidate-card:hover .candidate-overlay {
+            opacity: 1;
+        }
+        
+        .candidate-info {
+            padding: 1.8rem;
+        }
+        
+        .candidate-name {
+            font-size: 1.6rem;
+            color: #2575fc;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .candidate-name i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .candidate-school {
+            font-weight: 600;
+            color: #6a11cb;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .candidate-school i {
+            margin-right: 8px;
+        }
+        
+        .candidate-degree {
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+        }
+        
+        .candidate-degree i {
+            margin-right: 8px;
+        }
+        
+        .candidate-skills {
+            margin: 1.2rem 0;
+        }
+        
+        .candidate-skills h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.7rem;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .candidate-skills h3 i {
+            margin-right: 8px;
+            color: #6a11cb;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .candidate-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .profile-link {
+            display: inline-flex;
+            align-items: center;
+            background: #2575fc;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.2s ease;
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .profile-link:hover {
+            background: #6a11cb;
+            transform: translateY(-2px);
+        }
+        
+        .profile-link i {
+            margin-right: 8px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+            color: #6a11cb;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 95%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .portfolio-container {
+            padding: 20px;
+        }
+        
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .portfolio-header h1 {
+            color: #2575fc;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .portfolio-section {
+            margin-bottom: 40px;
+        }
+        
+        .portfolio-section h2 {
+            color: #6a11cb;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .portfolio-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-card-content {
+            padding: 15px;
+        }
+        
+        .portfolio-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .portfolio-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .skill-item {
+            background: #f5f7fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .skill-level {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #2575fc;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: #2575fc;
+        }
+        
+        .timeline-content .date {
+            font-weight: bold;
+            color: #6a11cb;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #6a11cb;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        @media (max-width: 768px) {
+            .candidates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .candidate-links {
+                flex-direction: column;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hồ Sơ Ứng Viên Tiềm Năng</h1>
+        <p class="subtitle">Khám phá hồ sơ của 5 ứng viên xuất sắc với nền tảng học vấn vững chắc và kỹ năng chuyên môn ấn tượng</p>
+    </header>
+    
+    <div class="container">
+        <div class="candidates-grid">
+            <!-- Ứng viên 1 -->
+            <div class="candidate-card">
+                <div class="candidate-img-container">
+                    <img src="z7235073665663_0a37de7677c463592ffa9666821d88aa.jpg" alt="Hoàng Nguyên Anh" class="candidate-img">
+                    <div class="candidate-overlay">
+                        <h3>Kỹ sư Công nghệ Thông tin</h3>
+                        <p>3 năm kinh nghiệm phát triển phần mềm</p>
+                    </div>
+                </div>
+                <div class="candidate-info">
+                    <h2 class="candidate-name"><i class="fas fa-user"></i> Hoàng Nguyên Anh</h2>
+                    <p class="candidate-school"><i class="fas fa-graduation-cap"></i> Đại học Bách Khoa Hà Nội</p>
+                    <p class="candidate-degree"><i class="fas fa-award"></i> Kỹ sư Công nghệ Thông tin</p>
+                    
+                    <div class="candidate-skills">
+                        <h3><i class="fas fa-star"></i> Kỹ năng chuyên môn</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="candidate-links">
+                        <a href="#" class="profile-link" onclick="openCV('hoang-nguyen-anh')"><i class="fas fa-file-pdf"></i> Xem CV đầy đủ</a>
+                        <a href="#" class="profile-link" onclick="openPortfolio('hoang-nguyen-anh')"><i class="fas fa-briefcase"></i> Portfolio</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ứng viên 2 -->
+            <div class="candidate-card">
+                <div class="candidate-img-container">
+                    <img src="z7235078145034_08a315b32f2d8b7be82dea8d681860a4.jpg"Phạm Võ Bảo Lâm" class="candidate-img">
+                    <div class="candidate-overlay">
+                        <h3>Chuyên viên Marketing</h3>
+                        <p>Chiến lược gia Digital Marketing</p>
+                    </div>
+                </div>
+                <div class="candidate-info">
+                    <h2 class="candidate-name"><i class="fas fa-user"></i> Phạm Võ Bảo Lâm</h2>
+                    <p class="candidate-school"><i class="fas fa-graduation-cap"></i> Đại học Kinh tế Quốc dân</p>
+                    <p class="candidate-degree"><i class="fas fa-award"></i> Cử nhân Quản trị Kinh doanh</p>
+                    
+                    <div class="candidate-skills">
+                        <h3><i class="fas fa-star"></i> Kỹ năng chuyên môn</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Digital Marketing</span>
+                            <span class="skill-tag">SEO/SEM</span>
+                            <span class="skill-tag">Content Strategy</span>
+                            <span class="skill-tag">Google Analytics</span>
+                            <span class="skill-tag">Social Media</span>
+                            <span class="skill-tag">Brand Management</span>
+                        </div>
+                    </div>
+                    
+                    <div class="candidate-links">
+                        <a href="#" class="profile-link" onclick="openCV('pham-vo-bao-lam')"><i class="fas fa-file-pdf"></i> Xem CV đầy đủ</a>
+                        <a href="#" class="profile-link" onclick="openPortfolio('pham-vo-bao-lam')"><i class="fas fa-briefcase"></i> Portfolio</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ứng viên 3 -->
+            <div class="candidate-card">
+                <div class="candidate-img-container">
+                    <img src="z7235059317713_20cb6cd65136e43d5fd4c4fe7ed704ae.jpg"Hoàng Thái Dương" class="candidate-img">
+                    <div class="candidate-overlay">
+                        <h3>Bác sĩ Đa khoa</h3>
+                        <p>Chuyên về Nội khoa và Chẩn đoán</p>
+                    </div>
+                </div>
+                <div class="candidate-info">
+                    <h2 class="candidate-name"><i class="fas fa-user"></i> Hoàng Thái Dương</h2>
+                    <p class="candidate-school"><i class="fas fa-graduation-cap"></i> Đại học Y Hà Nội</p>
+                    <p class="candidate-degree"><i class="fas fa-award"></i> Bác sĩ Đa khoa</p>
+                    
+                    <div class="candidate-skills">
+                        <h3><i class="fas fa-star"></i> Kỹ năng chuyên môn</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Chẩn đoán bệnh</span>
+                            <span class="skill-tag">Điều trị nội khoa</span>
+                            <span class="skill-tag">Cấp cứu</span>
+                            <span class="skill-tag">Siêu âm</span>
+                            <span class="skill-tag">Xét nghiệm</span>
+                            <span class="skill-tag">Tư vấn sức khỏe</span>
+                        </div>
+                    </div>
+                    
+                    <div class="candidate-links">
+                        <a href="#" class="profile-link" onclick="openCV('hoang-thai-duong')"><i class="fas fa-file-pdf"></i> Xem CV đầy đủ</a>
+                        <a href="#" class="profile-link" onclick="openPortfolio('hoang-thai-duong')"><i class="fas fa-briefcase"></i> Portfolio</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ứng viên 4 -->
+            <div class="candidate-card">
+                <div class="candidate-img-container">
+                    <img src="z7235102988767_e1d67fb46d7cff6a3a4adc905018e607.jpg"Lưu Quỳnh Chi" class="candidate-img">
+                    <div class="candidate-overlay">
+                        <h3>Chuyên viên Kinh tế Đối ngoại</h3>
+                        <p>Chuyên gia về Thương mại Quốc tế</p>
+                    </div>
+                </div>
+                <div class="candidate-info">
+                    <h2 class="candidate-name"><i class="fas fa-user"></i> Lưu Quỳnh Chi</h2>
+                    <p class="candidate-school"><i class="fas fa-graduation-cap"></i> Đại học Ngoại thương</p>
+                    <p class="candidate-degree"><i class="fas fa-award"></i> Cử nhân Kinh tế Đối ngoại</p>
+                    
+                    <div class="candidate-skills">
+                        <h3><i class="fas fa-star"></i> Kỹ năng chuyên môn</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Thương mại QT</span>
+                            <span class="skill-tag">Đàm phán</span>
+                            <span class="skill-tag">Logistics</span>
+                            <span class="skill-tag">Tiếng Anh</span>
+                            <span class="skill-tag">Tiếng Nhật</span>
+                            <span class="skill-tag">Quản lý dự án</span>
+                        </div>
+                    </div>
+                    
+                    <div class="candidate-links">
+                        <a href="#" class="profile-link" onclick="openCV('luu-quynh-chi')"><i class="fas fa-file-pdf"></i> Xem CV đầy đủ</a>
+                        <a href="#" class="profile-link" onclick="openPortfolio('luu-quynh-chi')"><i class="fas fa-briefcase"></i> Portfolio</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ứng viên 5 -->
+            <div class="candidate-card">
+                <div class="candidate-img-container">
+                    <img src="z7235083137485_bb154061b3655716529c252140c783db.jpg"Đỗ Vân Anh" class="candidate-img">
+                    <div class="candidate-overlay">
+                        <h3>Kiến trúc sư</h3>
+                        <p>Chuyên về Thiết kế Đô thị Bền vững</p>
+                    </div>
+                </div>
+                <div class="candidate-info">
+                    <h2 class="candidate-name"><i class="fas fa-user"></i> Đỗ Vân Anh</h2>
+                    <p class="candidate-school"><i class="fas fa-graduation-cap"></i> Đại học Kiến trúc Hà Nội</p>
+                    <p class="candidate-degree"><i class="fas fa-award"></i> Kiến trúc sư</p>
+                    
+                    <div class="candidate-skills">
+                        <h3><i class="fas fa-star"></i> Kỹ năng chuyên môn</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">AutoCAD</span>
+                            <span class="skill-tag">SketchUp</span>
+                            <span class="skill-tag">Revit</span>
+                            <span class="skill-tag">3D Modeling</span>
+                            <span class="skill-tag">Thiết kế đô thị</span>
+                            <span class="skill-tag">Quy hoạch</span>
+                        </div>
+                    </div>
+                    
+                    <div class="candidate-links">
+                        <a href="#" class="profile-link" onclick="openCV('do-van-anh')"><i class="fas fa-file-pdf"></i> Xem CV đầy đủ</a>
+                        <a href="#" class="profile-link" onclick="openPortfolio('do-van-anh')"><i class="fas fa-briefcase"></i> Portfolio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 - Trang web giới thiệu CV ứng viên | Dự án tuyển dụng nhân tài</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> info@recruitment.com
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i> (024) 1234 5678
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> Tòa nhà A, 123 Trần Duy Hưng, Hà Nội
+                </div>
+            </div>
+        </div>
+    </footer>
 
+    <!-- Portfolio Modals -->
+    <div id="portfolio-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closePortfolio()">×</button>
+            <div id="portfolio-content" class="portfolio-container">
+                <!-- Portfolio content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CV Modals -->
+    <div id="cv-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeCV()">×</button>
+            <div id="cv-content" class="portfolio-container">
+                <!-- CV content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Portfolio data for each candidate
+        const portfolioData = {
+            'do-van-anh': {
+                name: 'Đỗ Vân Anh',
+                title: 'Kiến trúc sư',
+                subtitle: 'Chuyên về Thiết kế Đô thị Bền vững',
+                sections: [
+                    {
+                        title: 'Thông tin cá nhân',
+                        content: `
+                            <p><strong>Họ tên:</strong> Đỗ Vân Anh</p>
+                            <p><strong>Ngày sinh:</strong> 12/11/2008</p>
+                            <p><strong>Liên hệ:</strong> vananhkts@gmail.com | 0987 654 321</p>
+                            <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                        `
+                    },
+                    {
+                        title: 'Học vấn & Kinh nghiệm',
+                        content: `
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Đại học Kiến trúc Hà Nội</h3>
+                                        <div class="date">2026 - 2030</div>
+                                        <p>Sinh viên ngành Kiến trúc Công trình. Tham gia nhiều dự án thiết kế và cuộc thi sáng tạo.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Thực tập sinh tại Công ty Kiến trúc XYZ</h3>
+                                        <div class="date">2028</div>
+                                        <p>Tham gia vào dự án thiết kế khu đô thị mới, học hỏi kinh nghiệm thực tế về quy trình thiết kế và thi công.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Thiết kế tự do</h3>
+                                        <div class="date">2027 - Hiện tại</div>
+                                        <p>Thiết kế các công trình nhà ở, biệt thự và không gian nội thất cho khách hàng cá nhân.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Mục tiêu nghề nghiệp & Triết lý làm việc',
+                        content: `
+                            <p><strong>Mục tiêu ngắn hạn:</strong> Trở thành kiến trúc sư có chuyên môn vững vàng, tham gia vào các dự án kiến trúc bền vững.</p>
+                            <p><strong>Mục tiêu dài hạn:</strong> Trở thành chuyên gia thiết kế đô thị bền vững, đóng góp vào sự phát triển kiến trúc xanh tại Việt Nam.</p>
+                            <p><strong>Triết lý làm việc:</strong> "Kiến trúc không chỉ là xây dựng không gian, mà còn là tạo ra những trải nghiệm và cảm xúc cho con người."</p>
+                        `
+                    },
+                    {
+                        title: 'Dự án tiêu biểu',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Biệt thự hiện đại" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Biệt thự hiện đại</h3>
+                                        <p>Thiết kế biệt thự 2 tầng với không gian mở, tận dụng tối đa ánh sáng tự nhiên.</p>
+                                        <p><strong>Vật liệu:</strong> Kính cường lực, bê tông mài, gỗ tự nhiên</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Quán cà phê" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Quán cà phê "The Green Corner"</h3>
+                                        <p>Không gian cà phê kết hợp cây xanh, tạo điểm nhấn với vật liệu tái chế.</p>
+                                        <p><strong>Vật liệu:</strong> Gỗ tái chế, tre, đá tự nhiên</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chung cư cao cấp" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Chung cư cao cấp Skyline</h3>
+                                        <p>Thiết kế tổng mặt bằng và căn hộ mẫu cho tòa chung cư 25 tầng.</p>
+                                        <p><strong>Vật liệu:</strong> Kính Low-E, nhôm kính, đá granite</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Kỹ năng & Năng lực',
+                        content: `
+                            <div class="skills-container">
+                                <div class="skill-item">
+                                    <div class="skill-name">AutoCAD</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">SketchUp</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Revit</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">3Ds Max</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Photoshop</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 style="margin-top: 20px;">Kỹ năng mềm</h3>
+                            <ul>
+                                <li>Giao tiếp hiệu quả với khách hàng và đội ngũ thi công</li>
+                                <li>Quản lý dự án và thời gian hiệu quả</li>
+                                <li>Tư duy sáng tạo và giải quyết vấn đề</li>
+                                <li>Làm việc nhóm đa ngành</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: 'Chứng nhận & Thành tựu',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Giải Nhì Cuộc thi Thiết kế Kiến trúc Trẻ</h3>
+                                        <p>2029 - Đạt giải với thiết kế "Ngôi nhà Xanh" - công trình thân thiện với môi trường.</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Chứng chỉ AutoCAD Chuyên nghiệp</h3>
+                                        <p>Autodesk - 2028</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Học bổng Xuất sắc</h3>
+                                        <p>Đại học Kiến trúc Hà Nội - 2027</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    }
+                ]
+            },
+            'hoang-nguyen-anh': {
+                name: 'Hoàng Nguyên Anh',
+                title: 'Kỹ sư Công nghệ Thông tin',
+                subtitle: 'Chuyên phát triển phần mềm và ứng dụng web',
+                sections: [
+                    {
+                        title: 'Thông tin cá nhân',
+                        content: `
+                            <p><strong>Họ tên:</strong> Hoàng Nguyên Anh</p>
+                            <p><strong>Ngày sinh:</strong> 15/05/2008</p>
+                            <p><strong>Liên hệ:</strong> nguyenanh.it@gmail.com | 0988 123 456</p>
+                            <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                        `
+                    },
+                    {
+                        title: 'Giới thiệu',
+                        content: `
+                            <p>Là kỹ sư công nghệ thông tin với 3 năm kinh nghiệm phát triển phần mềm và ứng dụng web. Đam mê công nghệ và luôn tìm tòi học hỏi những công nghệ mới.</p>
+                            <p><strong>Mục tiêu ngắn hạn:</strong> Trở thành Full-stack Developer chuyên nghiệp</p>
+                            <p><strong>Mục tiêu dài hạn:</strong> Trở thành Tech Lead và đào tạo thế hệ lập trình viên trẻ</p>
+                        `
+                    },
+                    {
+                        title: 'Kinh nghiệm làm việc',
+                        content: `
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Công ty Cổ phần Công nghệ ABC</h3>
+                                        <div class="date">2028 - Hiện tại</div>
+                                        <p><strong>Vị trí:</strong> Full-stack Developer</p>
+                                        <p>Phát triển và bảo trì hệ thống quản lý doanh nghiệp, tối ưu hiệu suất ứng dụng.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Công ty TNHH Tech Solutions</h3>
+                                        <div class="date">2027 - 2028</div>
+                                        <p><strong>Vị trí:</strong> Front-end Developer</p>
+                                        <p>Phát triển giao diện người dùng cho các ứng dụng web, tối ưu trải nghiệm người dùng.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Dự án tiêu biểu',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hệ thống quản lý" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Hệ thống Quản lý Doanh nghiệp</h3>
+                                        <p>Phát triển hệ thống quản lý toàn diện cho doanh nghiệp vừa và nhỏ.</p>
+                                        <p><strong>Công nghệ:</strong> React, Node.js, MongoDB</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ứng dụng di động" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Ứng dụng Di động E-commerce</h3>
+                                        <p>Xây dựng ứng dụng mua sắm trực tuyến trên nền tảng di động.</p>
+                                        <p><strong>Công nghệ:</strong> React Native, Firebase, Redux</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Kỹ năng',
+                        content: `
+                            <h3>Kỹ năng chuyên môn</h3>
+                            <div class="skills-container">
+                                <div class="skill-item">
+                                    <div class="skill-name">Java</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Python</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">JavaScript</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">React</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Node.js</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 style="margin-top: 20px;">Kỹ năng mềm</h3>
+                            <ul>
+                                <li>Giải quyết vấn đề hiệu quả</li>
+                                <li>Làm việc nhóm và giao tiếp</li>
+                                <li>Quản lý thời gian và dự án</li>
+                                <li>Tư duy phản biện</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: 'Bằng cấp & Chứng chỉ',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Kỹ sư Công nghệ Thông tin</h3>
+                                        <p>Đại học Bách Khoa Hà Nội - 2026-2030</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Chứng chỉ AWS Solutions Architect</h3>
+                                        <p>Amazon Web Services - 2029</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Chứng chỉ Google Cloud Professional</h3>
+                                        <p>Google Cloud - 2028</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Triết lý làm việc',
+                        content: `
+                            <p>"Công nghệ không ngừng phát triển, và chúng ta phải không ngừng học hỏi. Mỗi dòng code không chỉ là giải pháp kỹ thuật, mà còn là sự sáng tạo và đam mê."</p>
+                        `
+                    }
+                ]
+            },
+            'hoang-thai-duong': {
+                name: 'Hoàng Thái Dương',
+                title: 'Bác sĩ Đa khoa',
+                subtitle: 'Chuyên về Nội khoa và Chẩn đoán',
+                sections: [
+                    {
+                        title: 'Thông tin cá nhân',
+                        content: `
+                            <p><strong>Họ tên:</strong> Hoàng Thái Dương</p>
+                            <p><strong>Ngày sinh:</strong> 17/7/2008</p>
+                            <p><strong>Quê quán:</strong> Nghệ An</p>
+                            <p><strong>Liên hệ:</strong> thaiduong.bs@gmail.com | 0989 876 543</p>
+                            <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                        `
+                    },
+                    {
+                        title: 'Học vấn & Đào tạo',
+                        content: `
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Đại học Y Hà Nội</h3>
+                                        <div class="date">2026 - 2032</div>
+                                        <p>Bác sĩ Đa khoa. Tham gia các khóa học về chẩn đoán hình ảnh và nội khoa.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Khóa đào tạo Chẩn đoán Hình ảnh</h3>
+                                        <div class="date">2030</div>
+                                        <p>Hoàn thành khóa đào tạo chuyên sâu về siêu âm, X-quang và CT scan.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Hội thảo Y học Nội khoa</h3>
+                                        <div class="date">2029</div>
+                                        <p>Tham gia hội thảo về các phương pháp điều trị nội khoa tiên tiến.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Kinh nghiệm làm việc',
+                        content: `
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Bệnh viện Đa khoa Quốc tế</h3>
+                                        <div class="date">2031 - Hiện tại</div>
+                                        <p><strong>Vị trí:</strong> Bác sĩ Nội khoa</p>
+                                        <p>Thăm khám và điều trị bệnh nhân nội trú, tham gia ca cấp cứu, hội chẩn chuyên khoa.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Bệnh viện Đa khoa Tỉnh</h3>
+                                        <div class="date">2030 - 2031</div>
+                                        <p><strong>Vị trí:</strong> Bác sĩ Thực tập</p>
+                                        <p>Hỗ trợ bác sĩ chính trong chẩn đoán và điều trị, thực hiện các thủ thuật y khoa cơ bản.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Thành tựu & Giải thưởng',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Giải thưởng Bác sĩ trẻ xuất sắc</h3>
+                                        <p>2032 - Vinh danh bác sĩ trẻ có nhiều đóng góp trong công tác khám chữa bệnh.</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Nghiên cứu về bệnh tim mạch</h3>
+                                        <p>2031 - Tham gia nghiên cứu về các yếu tố nguy cơ bệnh tim mạch ở người trẻ.</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Ca lâm sàng điển hình</h3>
+                                        <p>2030 - Chẩn đoán và điều trị thành công ca bệnh hiếm gặp về hô hấp.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Kỹ năng',
+                        content: `
+                            <h3>Kỹ năng chuyên môn</h3>
+                            <div class="skills-container">
+                                <div class="skill-item">
+                                    <div class="skill-name">Chẩn đoán bệnh</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Điều trị nội khoa</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Cấp cứu</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Siêu âm</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Xét nghiệm</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 style="margin-top: 20px;">Kỹ năng mềm</h3>
+                            <ul>
+                                <li>Giao tiếp và thấu hiểu bệnh nhân</li>
+                                <li>Làm việc nhóm đa chuyên khoa</li>
+                                <li>Quản lý thời gian và áp lực công việc</li>
+                                <li>Giải quyết vấn đề phức tạp</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: 'Mục tiêu nghề nghiệp',
+                        content: `
+                            <p><strong>Mục tiêu ngắn hạn:</strong> Trở thành bác sĩ nội khoa chuyên sâu, nâng cao kỹ năng chẩn đoán và điều trị.</p>
+                            <p><strong>Mục tiêu dài hạn:</strong> Trở thành chuyên gia trong lĩnh vực tim mạch, tham gia đào tạo thế hệ bác sĩ trẻ.</p>
+                        `
+                    },
+                    {
+                        title: 'Triết lý làm việc',
+                        content: `
+                            <p>"Nghề y không chỉ là chữa bệnh, mà còn là sự cảm thông và chia sẻ. Mỗi bệnh nhân là một câu chuyện, và nhiệm vụ của chúng tôi là viết nên cái kết có hậu cho câu chuyện đó."</p>
+                        `
+                    }
+                ]
+            },
+            'luu-quynh-chi': {
+                name: 'Lưu Quỳnh Chi',
+                title: 'Chuyên viên Kinh tế Đối ngoại',
+                subtitle: 'Chuyên gia về Thương mại Quốc tế',
+                sections: [
+                    {
+                        title: 'Thông tin cá nhân',
+                        content: `
+                            <p><strong>Họ tên:</strong> Lưu Quỳnh Chi</p>
+                            <p><strong>Ngày sinh:</strong> 16/11/2008</p>
+                            <p><strong>Liên hệ:</strong> quynhchi.ktdn@gmail.com | 0987 123 456</p>
+                            <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                        `
+                    },
+                    {
+                        title: 'Học vấn & Bằng cấp',
+                        content: `
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Đại học Ngoại thương</h3>
+                                        <div class="date">2026 - 2030</div>
+                                        <p>Cử nhân Kinh tế Đối ngoại. Đạt học bổng xuất sắc 3 năm liên tiếp.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Chứng chỉ Tiếng Anh Quốc tế</h3>
+                                        <div class="date">2028</div>
+                                        <p>IELTS 8.0, TOEIC 950 điểm. Thành thạo tiếng Anh thương mại.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Chứng chỉ Tiếng Nhật</h3>
+                                        <div class="date">2029</div>
+                                        <p>JLPT N2. Có khả năng giao tiếp và đàm phán bằng tiếng Nhật.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Kinh nghiệm làm việc',
+                        content: `
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Công ty Xuất nhập khẩu ABC</h3>
+                                        <div class="date">2029 - Hiện tại</div>
+                                        <p><strong>Vị trí:</strong> Chuyên viên Kinh tế Đối ngoại</p>
+                                        <p>Đàm phán hợp đồng với đối tác quốc tế, quản lý chuỗi cung ứng, xử lý thủ tục hải quan.</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Tập đoàn Thương mại Quốc tế</h3>
+                                        <div class="date">2028 - 2029</div>
+                                        <p><strong>Vị trí:</strong> Thực tập sinh Kinh doanh Quốc tế</p>
+                                        <p>Hỗ trợ nghiên cứu thị trường, phân tích dữ liệu xuất nhập khẩu, chuẩn bị tài liệu đàm phán.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Dự án học tập & Thực tế',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dự án nghiên cứu" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Nghiên cứu Thị trường Quốc tế</h3>
+                                        <p>Phân tích tiềm năng xuất khẩu nông sản Việt Nam sang thị trường EU.</p>
+                                        <p><strong>Kết quả:</strong> Đề xuất được chấp nhận bởi Hiệp hội Nông nghiệp</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dự án kinh doanh" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Kế hoạch Kinh doanh Quốc tế</h3>
+                                        <p>Xây dựng kế hoạch marketing quốc tế cho sản phẩm thủ công mỹ nghệ.</p>
+                                        <p><strong>Kết quả:</strong> Giải Nhì cuộc thi Khởi nghiệp Quốc tế</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dự án logistics" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Dự án Vận tải & Logistics</h3>
+                                        <p>Tối ưu hóa chuỗi cung ứng cho hàng hóa xuất khẩu sang Nhật Bản.</p>
+                                        <p><strong>Kết quả:</strong> Giảm 15% chi phí vận chuyển</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Kỹ năng & Sản phẩm',
+                        content: `
+                            <h3>Kỹ năng mềm</h3>
+                            <ul>
+                                <li><strong>Ngoại ngữ:</strong> Tiếng Anh (IELTS 8.0), Tiếng Nhật (JLPT N2)</li>
+                                <li><strong>Đàm phán:</strong> Kinh nghiệm đàm phán với đối tác quốc tế</li>
+                                <li><strong>Giao tiếp:</strong> Thuyết trình, xây dựng mối quan hệ khách hàng</li>
+                                <li><strong>Quản lý dự án:</strong> Lập kế hoạch, phân bổ nguồn lực, giám sát tiến độ</li>
+                            </ul>
+                            
+                            <h3 style="margin-top: 20px;">Sản phẩm thể hiện kỹ năng</h3>
+                            <ul>
+                                <li>Thiết kế bản trình bày cho hội nghị thương mại quốc tế</li>
+                                <li>Báo cáo phân tích thị trường cho 5 quốc gia Đông Nam Á</li>
+                                <li>Tham gia câu lạc bộ Kinh tế Quốc tế - vai trò Phó Chủ nhiệm</li>
+                                <li>Tổ chức sự kiện giao lưu văn hóa Việt - Nhật</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: 'Phương châm làm việc',
+                        content: `
+                            <p>"Trong thế giới toàn cầu hóa, mỗi thương vụ không chỉ là giao dịch kinh tế mà còn là cầu nối văn hóa. Thành công trong kinh doanh quốc tế đến từ sự thấu hiểu và tôn trọng sự khác biệt."</p>
+                        `
+                    }
+                ]
+            },
+            'pham-vo-bao-lam': {
+                name: 'Phạm Võ Bảo Lâm',
+                title: 'Chuyên viên Marketing',
+                subtitle: 'Chiến lược gia Digital Marketing',
+                sections: [
+                    {
+                        title: 'Thông tin cá nhân',
+                        content: `
+                            <p><strong>Họ tên:</strong> Phạm Võ Bảo Lâm</p>
+                            <p><strong>Ngày sinh:</strong> 1/7/2008</p>
+                            <p><strong>Liên hệ:</strong> baolam.marketing@gmail.com | 0986 543 210</p>
+                            <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                        `
+                    },
+                    {
+                        title: 'Mục tiêu nghề nghiệp',
+                        content: `
+                            <p><strong>Mục tiêu ngắn hạn:</strong> Trở thành Digital Marketing Manager, quản lý chiến dịch marketing cho thương hiệu lớn.</p>
+                            <p><strong>Mục tiêu dài hạn:</strong> Trở thành Giám đốc Marketing, xây dựng chiến lược thương hiệu toàn cầu.</p>
+                        `
+                    },
+                    {
+                        title: 'Kỹ năng chuyên môn',
+                        content: `
+                            <div class="skills-container">
+                                <div class="skill-item">
+                                    <div class="skill-name">Digital Marketing</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Phân tích dữ liệu</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Quản lý tài chính</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Content Strategy</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-name">Quản lý dự án</div>
+                                    <div class="skill-level">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Kinh nghiệm làm việc',
+                        content: `
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Công ty Truyền thông XYZ</h3>
+                                        <div class="date">2029 - Hiện tại</div>
+                                        <p><strong>Vị trí:</strong> Chuyên viên Digital Marketing</p>
+                                        <p>Quản lý chiến dịch quảng cáo trên các nền tảng digital, phân tích hiệu quả ROI, tối ưu ngân sách marketing.</p>
+                                        <p><strong>Thành tích:</strong> Tăng 40% lượng khách hàng tiềm năng trong 6 tháng</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-content">
+                                        <h3>Công ty Cổ phần Thương mại ABC</h3>
+                                        <div class="date">2028 - 2029</div>
+                                        <p><strong>Vị trí:</strong> Thực tập sinh Marketing</p>
+                                        <p>Hỗ trợ lập kế hoạch marketing, quản lý mạng xã hội, phân tích đối thủ cạnh tranh.</p>
+                                        <p><strong>Thành tích:</strong> Tăng 25% tương tác trên mạng xã hội</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Dự án đã thực hiện',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chiến dịch Digital" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Chiến dịch Digital Marketing</h3>
+                                        <p>Xây dựng và triển khai chiến dịch quảng cáo đa kênh cho sản phẩm mới.</p>
+                                        <p><strong>Kết quả:</strong> Đạt 50,000 lượt tiếp cận, 5,000 tương tác</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Xây dựng thương hiệu" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Xây dựng Thương hiệu</h3>
+                                        <p>Phát triển chiến lược định vị thương hiệu và hệ thống nhận diện thương hiệu.</p>
+                                        <p><strong>Kết quả:</strong> Tăng 30% nhận diện thương hiệu sau 3 tháng</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Phân tích thị trường" class="portfolio-img">
+                                    <div class="portfolio-card-content">
+                                        <h3>Phân tích Thị trường</h3>
+                                        <p>Nghiên cứu và phân tích thị trường mục tiêu, đề xuất chiến lược tiếp cận.</p>
+                                        <p><strong>Kết quả:</strong> Xác định được 3 phân khúc khách hàng tiềm năng</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Bằng cấp & Chứng chỉ',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Cử nhân Quản trị Kinh doanh</h3>
+                                        <p>Đại học Kinh tế Quốc dân - 2026-2030</p>
+                                        <p>Chuyên ngành: Marketing & Truyền thông</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Chứng chỉ Digital Marketing</h3>
+                                        <p>Google Digital Garage - 2028</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Chứng chỉ Google Analytics</h3>
+                                        <p>Google - 2029</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Thành tích & Giải thưởng',
+                        content: `
+                            <div class="portfolio-grid">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Giải Nhì Cuộc thi Marketing</h3>
+                                        <p>2029 - Chiến dịch "Thương hiệu Quốc gia"</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Học bổng Xuất sắc</h3>
+                                        <p>Đại học Kinh tế Quốc dân - 2027, 2028</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-card">
+                                    <div class="portfolio-card-content">
+                                        <h3>Nhân viên Xuất sắc</h3>
+                                        <p>Công ty Truyền thông XYZ - 2030</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    {
+                        title: 'Triết lý công việc',
+                        content: `
+                            <p>"Marketing không chỉ là bán hàng, mà là xây dựng mối quan hệ và tạo ra giá trị. Mỗi chiến dịch thành công là kết quả của sự thấu hiểu khách hàng và sáng tạo không ngừng."</p>
+                        `
+                    }
+                ]
+            }
+        };
+
+        // CV data for each candidate
+        const cvData = {
+            'do-van-anh': {
+                name: 'Đỗ Vân Anh',
+                degree: 'Kiến trúc sư - Đại học Kiến trúc Hà Nội',
+                content: `
+                    <div class="portfolio-header">
+                        <h1>Đỗ Vân Anh</h1>
+                        <p>Kiến trúc sư | Chuyên về Thiết kế Đô thị Bền vững</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Thông tin Liên hệ</h2>
+                        <p><strong>Email:</strong> vananhkts@gmail.com</p>
+                        <p><strong>Điện thoại:</strong> 0987 654 321</p>
+                        <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Học vấn</h2>
+                        <p><strong>Đại học Kiến trúc Hà Nội</strong> (2026-2030)</p>
+                        <p>Chuyên ngành: Kiến trúc Công trình</p>
+                        <p>Bằng cấp: Kiến trúc sư</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Kinh nghiệm làm việc</h2>
+                        <p><strong>Công ty Kiến trúc XYZ</strong> (2028) - Thực tập sinh</p>
+                        <p><strong>Thiết kế tự do</strong> (2027-Hiện tại) - Kiến trúc sư</p>
+                    </div>
+                `
+            },
+            'hoang-nguyen-anh': {
+                name: 'Hoàng Nguyên Anh',
+                degree: 'Kỹ sư Công nghệ Thông tin - Đại học Bách Khoa Hà Nội',
+                content: `
+                    <div class="portfolio-header">
+                        <h1>Hoàng Nguyên Anh</h1>
+                        <p>Kỹ sư Công nghệ Thông tin | Chuyên phát triển phần mềm</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Thông tin Liên hệ</h2>
+                        <p><strong>Email:</strong> nguyenanh.it@gmail.com</p>
+                        <p><strong>Điện thoại:</strong> 0988 123 456</p>
+                        <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Học vấn</h2>
+                        <p><strong>Đại học Bách Khoa Hà Nội</strong> (2026-2030)</p>
+                        <p>Chuyên ngành: Công nghệ Thông tin</p>
+                        <p>Bằng cấp: Kỹ sư Công nghệ Thông tin</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Kinh nghiệm làm việc</h2>
+                        <p><strong>Công ty Cổ phần Công nghệ ABC</strong> (2028-Hiện tại) - Full-stack Developer</p>
+                        <p><strong>Công ty TNHH Tech Solutions</strong> (2027-2028) - Front-end Developer</p>
+                    </div>
+                `
+            },
+            'hoang-thai-duong': {
+                name: 'Hoàng Thái Dương',
+                degree: 'Bác sĩ Đa khoa - Đại học Y Hà Nội',
+                content: `
+                    <div class="portfolio-header">
+                        <h1>Hoàng Thái Dương</h1>
+                        <p>Bác sĩ Đa khoa | Chuyên về Nội khoa và Chẩn đoán</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Thông tin Liên hệ</h2>
+                        <p><strong>Email:</strong> thaiduong.bs@gmail.com</p>
+                        <p><strong>Điện thoại:</strong> 0989 876 543</p>
+                        <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Học vấn</h2>
+                        <p><strong>Đại học Y Hà Nội</strong> (2026-2032)</p>
+                        <p>Chuyên ngành: Bác sĩ Đa khoa</p>
+                        <p>Bằng cấp: Bác sĩ Đa khoa</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Kinh nghiệm làm việc</h2>
+                        <p><strong>Bệnh viện Đa khoa Quốc tế</strong> (2031-Hiện tại) - Bác sĩ Nội khoa</p>
+                        <p><strong>Bệnh viện Đa khoa Tỉnh</strong> (2030-2031) - Bác sĩ Thực tập</p>
+                    </div>
+                `
+            },
+            'luu-quynh-chi': {
+                name: 'Lưu Quỳnh Chi',
+                degree: 'Cử nhân Kinh tế Đối ngoại - Đại học Ngoại thương',
+                content: `
+                    <div class="portfolio-header">
+                        <h1>Lưu Quỳnh Chi</h1>
+                        <p>Chuyên viên Kinh tế Đối ngoại | Chuyên gia Thương mại Quốc tế</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Thông tin Liên hệ</h2>
+                        <p><strong>Email:</strong> quynhchi.ktdn@gmail.com</p>
+                        <p><strong>Điện thoại:</strong> 0987 123 456</p>
+                        <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Học vấn</h2>
+                        <p><strong>Đại học Ngoại thương</strong> (2026-2030)</p>
+                        <p>Chuyên ngành: Kinh tế Đối ngoại</p>
+                        <p>Bằng cấp: Cử nhân Kinh tế Đối ngoại</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Kinh nghiệm làm việc</h2>
+                        <p><strong>Công ty Xuất nhập khẩu ABC</strong> (2029-Hiện tại) - Chuyên viên Kinh tế Đối ngoại</p>
+                        <p><strong>Tập đoàn Thương mại Quốc tế</strong> (2028-2029) - Thực tập sinh Kinh doanh Quốc tế</p>
+                    </div>
+                `
+            },
+            'pham-vo-bao-lam': {
+                name: 'Phạm Võ Bảo Lâm',
+                degree: 'Cử nhân Quản trị Kinh doanh - Đại học Kinh tế Quốc dân',
+                content: `
+                    <div class="portfolio-header">
+                        <h1>Phạm Võ Bảo Lâm</h1>
+                        <p>Chuyên viên Marketing | Chiến lược gia Digital Marketing</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Thông tin Liên hệ</h2>
+                        <p><strong>Email:</strong> baolam.marketing@gmail.com</p>
+                        <p><strong>Điện thoại:</strong> 0986 543 210</p>
+                        <p><strong>Địa chỉ:</strong> Hà Nội, Việt Nam</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Học vấn</h2>
+                        <p><strong>Đại học Kinh tế Quốc dân</strong> (2026-2030)</p>
+                        <p>Chuyên ngành: Quản trị Kinh doanh</p>
+                        <p>Bằng cấp: Cử nhân Quản trị Kinh doanh</p>
+                    </div>
+                    <div class="portfolio-section">
+                        <h2>Kinh nghiệm làm việc</h2>
+                        <p><strong>Công ty Truyền thông XYZ</strong> (2029-Hiện tại) - Chuyên viên Digital Marketing</p>
+                        <p><strong>Công ty Cổ phần Thương mại ABC</strong> (2028-2029) - Thực tập sinh Marketing</p>
+                    </div>
+                `
+            }
+        };
+
+        // Function to open portfolio
+        function openPortfolio(candidateId) {
+            const portfolio = portfolioData[candidateId];
+            if (!portfolio) return;
+            
+            let portfolioHTML = `
+                <div class="portfolio-header">
+                    <h1>${portfolio.name}</h1>
+                    <p>${portfolio.title} | ${portfolio.subtitle}</p>
+                </div>
+            `;
+            
+            portfolio.sections.forEach(section => {
+                portfolioHTML += `
+                    <div class="portfolio-section">
+                        <h2>${section.title}</h2>
+                        <div>${section.content}</div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('portfolio-content').innerHTML = portfolioHTML;
+            document.getElementById('portfolio-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to open CV
+        function openCV(candidateId) {
+            const cv = cvData[candidateId];
+            if (!cv) return;
+            
+            document.getElementById('cv-content').innerHTML = cv.content;
+            document.getElementById('cv-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to close portfolio
+        function closePortfolio() {
+            document.getElementById('portfolio-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Function to close CV
+        function closeCV() {
+            document.getElementById('cv-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('portfolio-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePortfolio();
+            }
+        });
+
+        document.getElementById('cv-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCV();
+            }
+        });
+    </script>
+</body>
+</html>
